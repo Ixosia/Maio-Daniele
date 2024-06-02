@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatrice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #display {
+            width: 500px;
+            height: 30px;
+            margin: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        button {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calcolatrice</h1>
+    <input type="text" id="display" readonly>
+    <br>
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <br>
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('-')">-</button>
+    <br>
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('*')">x</button>
+    <br>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="appendToDisplay('/')">/</button>
+    <button onclick="calcolaRadiceQuadrata()">√</button>
+   <br>
+   <button onclick="calcolaRisultato()">=</button>
+   <button onclick="pulisciDisplay()">C</button>
+
+    <script>
+        function appendToDisplay(valore) {
+            document.getElementById('display').value += valore;
+        }
+
+        function pulisciDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calcolaRisultato() {
+            const input = document.getElementById('display').value;
+            try {
+                const risultato = calcolo(input);
+                document.getElementById('display').value = risultato;
+            } catch (error) {
+                document.getElementById('display').value = 'Errore';
+            }
+        }
+
+        function calcolo(valore) {
+            return Function('return (' + valore + ')')();
+        }
+
+        function calcolaRadiceQuadrata() {
+            const value = document.getElementById('display').value;
+            if (value) {
+                const risultato = Math.sqrt(parseFloat(value));
+                document.getElementById('display').value = risultato;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

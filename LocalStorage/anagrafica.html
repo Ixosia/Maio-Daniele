@@ -1,0 +1,53 @@
+<html>
+<head>
+    <link rel="stylesheet" href="stile.css">
+    <script>
+        function stampa() {
+            var print = document.getElementById("nome").value;
+        
+            var print1 = document.getElementById("cognome").value;
+          
+
+            var print2 = document.getElementById("citta").value;
+           
+
+            var print3 = document.getElementById("provincia").value;
+           
+            var print4 = document.getElementById("data").value;
+
+           
+            var vet = [];
+
+            vet[0]=print;
+            vet[1]=print1;
+            vet[2]=print2;
+            vet[3]=print4;
+            vet[4]=print3;
+            
+            
+            localStorage.setItem("dati", vet);
+
+            window.location.href="sium.html";
+        }
+       
+    
+        
+    </script>
+</head>
+<body align="center">
+    <h1>ANAGRAFICA</h1>
+    <h2>Nome</h2>
+    <input type="text" id="nome">
+    <h2>Cognome</h2>
+    <input type="text" id="cognome">
+    <h2>Nato a</h2>
+    <input type="text" id="citta">
+    <h2>Nato il</h2>
+    <input type="date" id="data">
+    <h2>Provincia di</h2>
+    <input type="text" id="provincia">
+</br>
+</br>
+    <input type="button" value="Premi Assai" onclick="stampa();">
+   
+</html>

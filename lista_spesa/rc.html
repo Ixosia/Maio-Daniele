@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricezione Dati</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Output LocalStorage:</h1>
+    </div>
+
+    <div id="dati"></div>
+
+    <script>
+        var memoria = localStorage.getItem("lista");
+        var vett =memoria.split(",");
+        stampaDati();
+    
+        function stampaDati() {
+            var stampaDati = document.getElementById("dati");
+    
+            if (vett.length > 0) {
+                for (let i = 0; i < vett.length; i++) {
+                    var cont = document.createElement("div");
+                    var itemText = vett[i];
+    
+                    var itemElement = document.createElement("span");
+                    itemElement.textContent = itemText;
+                    cont.appendChild(itemElement);
+    
+                    stampaDati.appendChild(cont);
+                }
+            } else {
+                console.log("Nessun dato trovato nel localStorage");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casi Covid Pandemia</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1"></script> <!-- Moment.js per la gestione delle date -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script> <!-- adattatori per Chart.js -->
+</head>
+<body>
+<div class="container">
+    <center><h1>Casi Covid</h1></center>
+    <div> 
+        <input type="button" class="btn btn-outline-dark" onclick="covid()" value="Clicca">
+    </div>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+<script>
+function covid(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv", true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var str = xhttp.responseText;
+            var dati = str.split("\n");
+           
+            var date = [];
+            var ricoverati = [];
+
+            for (let i = 1; i < dati.length; i++) {
+                var dato = dati[i].split(",");
+                if(dato[0] && dato[6]) { 
+                    date.push(dato[0]); 
+                    ricoverati.push(parseInt(dato[6]));
+                }
+            }
+
+            
+            var grafico = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(grafico, {
+                type: 'line',
+                data: {
+                    labels: date,
+                    datasets: [{
+                        label: 'Ricoverati con sintomi',
+                        data: ricoverati,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                tooltipFormat: 'll',
+                                displayFormats: {
+                                    day: 'MMM D'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Data'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Numero di Ricoverati'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+}
+</script>
+</body>
+</html>

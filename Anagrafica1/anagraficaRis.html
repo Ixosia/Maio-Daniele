@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Dati Anagrafici</title>
+</head>
+<body>
+    <h1>Dati Anagrafici</h1>
+    <div id="output">
+        <p id="name"></p>
+        <p id="surname"></p>
+        <p id="city"></p>
+        <p id="prov"></p>
+        <p id="ita"></p>
+        <p id="stampa"></p>
+        <p id="datelle"></p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            
+            var nome = localStorage.getItem("nome");
+            var cognome = localStorage.getItem("cognome");
+            var città = localStorage.getItem("città");
+            var provincia = localStorage.getItem("provincia");
+            var data = localStorage.getItem("data");
+            var italiano = localStorage.getItem("italiano") === "true" ? "Italiano" : "";
+            var matematica = localStorage.getItem("matematica") === "true" ? "Matematica" : "";
+            var sesso = localStorage.getItem("sesso");
+            var provinciaSelezionata = localStorage.getItem("provinciaSelezionata");
+
+            document.getElementById("name").innerHTML = "Nome: " + nome;
+            document.getElementById("surname").innerHTML = "Cognome: " + cognome;
+            document.getElementById("city").innerHTML = "Città: " + città;
+            document.getElementById("prov").innerHTML = "Provincia: " + provincia;
+            document.getElementById("ita").innerHTML = "Materie: " + italiano + " " + matematica;
+            document.getElementById("stampa").innerHTML = "Sesso: " + sesso;
+            document.getElementById("datelle").innerHTML = "Data di nascita: " + data;
+        };
+    </script>
+</body>
+</html>

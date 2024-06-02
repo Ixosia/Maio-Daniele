@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>local storage arrivo</title>
+    </head>
+    
+    <body>
+        <p id="stampa"></p>
+    </body>
+    <script>
+
+        var dat = localStorage.getItem("dati");
+        dat = document.getElementById("stampa").innerHTML;
+
+        var nome = dat[0];
+        nome = document.getElementById("name")
+        var cognome = dat[1];
+       cognome = document.getElementById("surname")
+        var citta = dat[2];
+        citta = document.getElementById("city")
+        var prov = dat[3];
+        prov = document.getElementById("prev")
+        var  data = dat[4];
+        data = document.getElementById("date")
+
+    </script>
+</html>

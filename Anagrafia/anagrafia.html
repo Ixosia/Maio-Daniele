@@ -1,0 +1,102 @@
+<html>
+<head>
+    <link rel="stylesheet" href="stile.css">
+    <script>
+        function stampa() {
+            var print = document.getElementById("nome").value;
+            document.getElementById("name").innerHTML = print;
+
+            var print1 = document.getElementById("cognome").value;
+            document.getElementById("surname").innerHTML = print1;
+
+            var print2 = document.getElementById("citta").value;
+            document.getElementById("city").innerHTML = print2;
+
+            var print3 = document.getElementById("provincia").value;
+            document.getElementById("prov").innerHTML = print3;
+
+            var print4 = document.getElementById("data").value;
+            document.getElementById("datelle").innerHTML = print4;
+
+            var ita = document.getElementById("italiano");
+            var mat = document.getElementById("matematica");
+            var materie = "";
+
+            if (ita.checked) { materie += "Italiano <br>"; }
+            if (mat.checked) { materie += "Matematica <br>"; }
+
+            document.getElementById("ita").innerHTML = materie;
+
+            for (var x = 0; x <= 3; x++) {
+                var z = document.getElementsByName("sesso")[x]?.checked;
+                if (z) {
+                    document.getElementById("stampa").innerHTML = document.getElementsByName("sesso")[x].value;
+                }
+            }
+
+            var provinceItaliane = [
+                "Milano",
+                "Napoli",
+                "Roma",
+                "Torino",
+                "CampoBasso",
+                "Palermo",
+                "Bari"
+            ];
+            var listbox = document.getElementById("provinceList");
+            listbox.innerHTML = ""; // Svuota la listbox prima di aggiungere le province
+
+            for (var i = 0; i < provinceItaliane.length; i++) {
+                var option = document.createElement("option");
+                option.text = provinceItaliane[i];
+                listbox.add(option);
+            }
+        }
+    </script>
+</head>
+<body align="center">
+    <h1>ANAGRAFICA</h1>
+    <h2>Nome</h2>
+    <input type="text" id="nome">
+    <h2>Cognome</h2>
+    <input type="text" id="cognome">
+    <h2>Nato a</h2>
+    <input type="text" id="citta">
+    <h2>Nato il</h2>
+    <input type="date" id="data">
+    <h2>Provincia di</h2>
+    <input type="text" id="provincia">
+    <p id="text"></p>
+    <p id="text1"></p>
+    <div class="divMaterie">
+        <h2><label for="italiano">Italiano</label></h2>
+        <input type="checkbox" id="italiano">
+    </div>
+
+    <div class="divMaterie">
+        <h2><label for="matematica">Matematica</label></h2>
+        <input type="checkbox" id="matematica">
+    </div>
+
+    <p><h2>Sesso</h2></p>
+    <div class="divSesso">
+        <input type="radio" value="Maschio" id="maschio" name="sesso" checked>Maschio<br>
+        <input type="radio" value="Femmina" id="femmina" name="sesso">Femmina<br>
+        <input type="radio" value="Optimus Prime" id="altro" name="sesso">Optimus Prime<br>
+    </div>
+
+    <h2>Scegli una provincia:</h2>
+    <select id="provinceList"></select>
+
+    <br><br>
+    <input type="button" value="Premi Assai" onclick="stampa();">
+    <p id="name"></p>
+    <p id="surname"></p>
+    <p id="city"></p>
+    <p id="prov"></p>
+    <p id="ita"></p>
+    <p id="stampa"></p>
+    <p id="datelle"></p>
+    <p id="provinceList"></p>
+</body>
+</html>

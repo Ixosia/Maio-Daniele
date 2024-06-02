@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <title>Olimpiadi</title>
+</head>
+<body>
+   
+    <canvas id="myCanvas" width="1080" height="720"style="border:1px solid black"></canvas>
+   
+ 
+</body>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    cerchio();
+
+
+    function cerchio(){
+
+
+        context.beginPath();
+        context.arc(250, 250, 50, 0, 2 * Math.PI);
+        context.stroke();
+        context.closePath();
+
+
+        context.beginPath();
+        context.arc(374, 250, 50, 0, 2 * Math.PI);
+        context.stroke();
+        context.closePath();
+
+
+        context.beginPath();
+        context.arc(498, 250, 50, 0, 2 * Math.PI);
+        context.stroke();
+        context.closePath();
+
+
+        context.beginPath();
+        context.arc(312, 300, 50, 0, 2 * Math.PI);
+        context.stroke();
+        context.closePath();
+
+
+        context.beginPath();
+        context.arc(436, 300, 50, 0, 2 * Math.PI);
+        context.stroke();
+        context.closePath();
+
+
+    }
+</script>
+
+
+</html>
+

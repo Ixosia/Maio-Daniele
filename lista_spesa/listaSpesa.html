@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Spesa</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Lista della Spesa</h1>
+    </div>
+
+    <div class="container">
+        <div class="dati-container">
+            <div class="subtitle">
+                <h2>Inserisci la lista di ciò che devi comprare</h2>
+            </div>
+            <div class="dati">
+                <input type="text" id="cibo" placeholder="Elementi Lista">
+                <button onclick="aggiungiCibo()">Aggiungi</button>
+            </div>
+            <div id="mome">
+            </div>
+        </div>  
+        <div class="btn-invio">
+            <button class="btn" onclick="inviaDati()">Invia Lista</button>
+        </div>
+    </div>
+
+    <script>
+       var lista = [];
+
+        function inviaDati() {
+            localStorage.setItem("lista",lista);
+            window.location.href = "rc.html";
+        } 
+
+        function aggiungiCibo() {
+            var cibo = document.getElementById("cibo").value;
+            lista.push(cibo);
+            vediLista();
+            document.getElementById("cibo").value = "";
+        }
+        function rimuoviCibo(testoInput) {
+            var testo = testoInput.value;
+            var index = lista.indexOf(testo); 
+            lista.splice(index, 1); 
+            vediLista();
+    }
+        function vediLista(){
+            var mome = document.getElementById("mome");
+            mome.innerHTML = "";
+            lista.forEach(function(oggettoLista) {
+                var divisore = document.createElement("div");
+                var testo = document.createElement("input");
+                testo.setAttribute("type", "text");
+                testo.value = oggettoLista;
+                divisore.appendChild(testo);
+
+                var testoBottone = document.createElement("button");
+                testoBottone.textContent = "Rimuovi";
+                testoBottone.addEventListener("click", function() {
+                    rimuoviCibo(testo);
+                });
+                divisore.appendChild(testoBottone);
+                mome.appendChild(divisore);
+            });
+        }
+    </script>
+</body>
+</html>

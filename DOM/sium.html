@@ -1,0 +1,61 @@
+﻿<html>   
+   <head>
+        <title>local storage arrivo</title>
+    </head>
+    
+    <body>
+	  <button onclick="aggiungi()">Aggiungi paragrafo</button>
+		<div id="testo"></div>
+		<div id="testo1"></div>
+		<div id="testo2"></div>
+		<div id="testo3"></div>
+		<div id="testo4"></div>
+
+    <script>
+		function aggiungi(){
+		
+        		var dat = localStorage.getItem("dati").split(",");
+		
+		
+        		var nome = dat[0];				
+       			var cognome = dat[1];			
+        		var citta = dat[2];			
+        		var prov = dat[3];			
+        		var data = dat[4];
+		
+			var cont  = document.createElement("div");		
+			var cont1 = document.createElement("div");
+			var cont2 = document.createElement("div");
+			var cont3 = document.createElement("div");
+			var cont4 = document.createElement("div");
+		
+			var text = document.createTextNode(nome);
+			var text1 = document.createTextNode(cognome);
+			var text2 = document.createTextNode(citta);
+			var text3 = document.createTextNode(prov);
+			var text4 = document.createTextNode(data);
+		
+			cont.appendChild(text);
+			cont1.appendChild(text1);
+			cont2.appendChild(text2);
+			cont3.appendChild(text3);
+			cont4.appendChild(text4);
+
+			document.getElementById("testo").appendChild(cont);
+			document.getElementById("testo1").appendChild(cont1);
+			document.getElementById("testo2").appendChild(cont2);
+			document.getElementById("testo3").appendChild(cont3);
+			document.getElementById("testo4").appendChild(cont4);
+	}
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+

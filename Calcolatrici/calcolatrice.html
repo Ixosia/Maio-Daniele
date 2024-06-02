@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>Calcolatrice</title>
+         <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], button {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #risultato {
+            font-weight: bold;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Calcolatrice</h1>
+        <div>
+            <input type="text" id="numero1" placeholder="Inserisci il primo numero">
+            <button onclick="aggiungiNumero('+')">+</button>
+            <button onclick="aggiungiNumero('-')">-</button>
+            <button onclick="cancellaTutto()">Cancella</button></div>
+            <div>
+            <input type="text" id="numero2" placeholder="Inserisci il secondo numero">
+            <button onclick="calcolaRisultato()">Calcola</button>
+        </div>
+        <div>
+        <p>Risultato: <span id="risultato"></span></p></div>
+        <script>
+            let operatore ="";
+            function aggiungiNumero(op){
+                operatore = op;
+            }
+
+            function calcolaRisultato(){
+                const num1 = parseFloat(document.getElementById("numero1").value);
+                const num2 = parseFloat(document.getElementById("numero2").value);
+                let risultato = 0 ;
+                if( operatore === '+'){
+                    risultato = num1 + num2 ;
+
+                }else if (operatore === '-'){
+                    risultato = num1 - num2;
+                }
+                document.getElementById("risultato").textContent = risultato;
+      
+            }
+            function cancellaTutto(){
+                document.getElementById("numero1").value="";
+                document.getElementById("numero2").value="";
+                document.getElementById("risultato").textContent="";
+
+
+            }
+        </script>
+    </body>
+</html>
